@@ -23,14 +23,13 @@ public class main {
 			e.printStackTrace();
 		}
 
-		for(int i=0; i<sheet.length; i++){
-			for(int j=0; j<sheet[i].length; j++)
-				System.out.print(sheet[i][j]+",");
-			System.out.println();
-		}
+		
+//		buttons.exportAll_start(sheet);
+//		buttons.exportAll_end(sheet);
+		buttons.exportTable(sheet);
 		
 		
-		buttons.exportAll(sheet);
+		
 		
 	}
 
