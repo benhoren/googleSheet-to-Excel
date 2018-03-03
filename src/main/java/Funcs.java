@@ -264,7 +264,9 @@ public class Funcs {
 			for(int j=0; j<matrix.length; j++){
 				str= matrix[i][j];
 
-				if(str!=null && !str.isEmpty() && str.length()>=8){
+				if(str != null)
+					str = str.trim();
+				if(str != null && !str.isEmpty() && str.length()>=8){
 
 					try{
 						char c = str.charAt(str.length()-5);

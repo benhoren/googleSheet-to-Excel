@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 
 
 public class mainScreen {
-
+ 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
