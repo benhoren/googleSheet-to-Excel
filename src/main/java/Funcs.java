@@ -31,8 +31,11 @@ public class Funcs {
 
 	static final String tmpsFold = "Tamplates";
 	static final String outputFold = "output";
+	
 	static final String tamplate1 = "exportAll.xlsx";
-	static final String tamplate2 = "allForTable.xlsx";
+	static final String tamplate2 = "exportAllend.xlsx";
+	static final String tamplate3 = "allForTable.xlsx";
+	static final String tamplate4 = "oneInstitution.xlsx";
 
 
 	public static boolean[][] ToRed(String[][] matrix){
@@ -83,13 +86,11 @@ public class Funcs {
 						}catch(Exception e){e.printStackTrace();}
 
 						exMtr[i][j] = addYears(dateToString(date), x);
-						System.out.println(exMtr[i][j]);
 					}
 					else exMtr[i][j] = matrix[i][j];
 				}	
 			}
 		}
-		System.out.println("434"+exMtr[4][4]);
 
 		return exMtr;
 	}
@@ -107,8 +108,23 @@ public class Funcs {
 
 
 
-	public static void writeMatrix(String[][] sheet, boolean[][] toRed,exportType ex ,String newnName) {
+	public static void writeMatrix(String[][] sheet, boolean[][] toRed,exportType ex ,String newName) {
 
+		
+		while(newName.indexOf('"') != -1){
+			newName = newName.replaceAll('"'+"", "''");
+		}
+		while(newName.indexOf('/') != -1){
+			newName = newName.replaceAll('/'+"", ".");
+		}
+		while(newName.indexOf('*') != -1){
+			newName = newName.replaceAll('*'+"", "x");
+		}
+		while(newName.indexOf('?') != -1){
+			newName = newName.replaceAll('?'+"", "");
+		}
+		
+		
 		File out = new File(outputFold);
 		if(!out.exists())
 			out.mkdir();
@@ -118,8 +134,12 @@ public class Funcs {
 
 		if(ex == exportType.exportAll)
 			tamplate = tamplate1;
-		if(ex == exportType.exportTable)
+		if(ex == exportType.exportAllend)
 			tamplate = tamplate2;
+		if(ex == exportType.exportTable)
+			tamplate = tamplate3;
+		if(ex == exportType.exportInstitution)
+			tamplate = tamplate4;
 
 
 
@@ -173,7 +193,7 @@ public class Funcs {
 
 			file.close();
 
-			String newfileName =outputFold+"/"+newnName;
+			String newfileName =outputFold+"/"+newName;
 
 
 			File f= new File(newfileName+".xlsx");
