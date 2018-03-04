@@ -79,7 +79,7 @@ public class Quickstart {
 		.setAccessType("offline")
 		.build();
 		Credential credential = new AuthorizationCodeInstalledApp(
-				flow, new LocalServerReceiver()).authorize("user2");
+				flow, new LocalServerReceiver()).authorize("user3");
 		System.out.println(
 				"Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
 		return credential;

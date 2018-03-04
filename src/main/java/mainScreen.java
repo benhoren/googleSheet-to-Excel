@@ -11,6 +11,10 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 public class mainScreen {
@@ -55,6 +59,7 @@ public class mainScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JTextPane textPane = new JTextPane();
+		textPane.setFont(new Font("Arial", Font.PLAIN, 13));
 		textPane.setEditable(false);
 		textPane.setFocusable(false);
 		textPane.setText(":\u05E7\u05D9\u05E9\u05D5\u05E8");
@@ -69,6 +74,7 @@ public class mainScreen {
 		
 		//מוסד נבחר
 		JButton btnNewButton = new JButton("מוסד נבחר");
+		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -94,6 +100,7 @@ public class mainScreen {
 		textField_1.setColumns(10);
 		
 		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setFont(new Font("Arial", Font.PLAIN, 13));
 		textPane_1.setEditable(false);
 		textPane_1.setFocusable(false);
 		textPane_1.setText("\u05DE\u05E1\u05E4\u05E8/ \u05E9\u05DD \u05DE\u05D5\u05E1\u05D3");
@@ -102,6 +109,7 @@ public class mainScreen {
 		
 		//יצא גליון
 		JButton button = new JButton("\u05D9\u05E6\u05D0 \u05D2\u05D9\u05DC\u05D9\u05D5\u05DF");
+		button.setFont(new Font("Arial", Font.PLAIN, 11));
 		button.setFocusPainted(false);
 		button.setBounds(422, 117, 97, 66);
 		button.addActionListener(new ActionListener() {
@@ -115,6 +123,7 @@ public class mainScreen {
 		
 		//כל המוסדות
 		JButton button_1 = new JButton("\u05DB\u05DC \u05D4\u05DE\u05D5\u05E1\u05D3\u05D5\u05EA");
+		button_1.setFont(new Font("Arial", Font.PLAIN, 11));
 		button_1.setFocusPainted(false);
 		button_1.setBounds(315, 117, 97, 66);
 		button_1.addActionListener(new ActionListener() {
@@ -127,21 +136,26 @@ public class mainScreen {
 		frame.getContentPane().add(button_1);
 		
 		JTextPane textPane_2 = new JTextPane();
+		textPane_2.setFont(new Font("Arial", Font.PLAIN, 13));
 		textPane_2.setEditable(false);
 		textPane_2.setText("\u05DC\u05D5\u05D2");
 		textPane_2.setBounds(488, 251, 83, 20);
 		frame.getContentPane().add(textPane_2);
 		
 		log = new JTextField();
+		log.setFont(new Font("Arial", Font.PLAIN, 13));
 		log.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		log.setEditable(false);
-		log.setBounds(392, 251, 86, 20);
+		log.setBounds(313, 251, 165, 20);
 		frame.getContentPane().add(log);
 		log.setColumns(10);
 	}
 	
 	public static void addToLog(String msg){
-		log.setText(msg);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String datetime = dtf.format(now); //2016/11/16 12:08:43
+		log.setText(msg +" "+ datetime);
 	}
 	
 	
